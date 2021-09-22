@@ -9,7 +9,8 @@ import CharDetails from '../charDetails';
 export default class App extends Component {
   
     state = {
-        openRandomChar: true
+        openRandomChar: true,
+        updateChar: null
     }
 
     onToggleChar = () => {
@@ -22,10 +23,19 @@ export default class App extends Component {
         })
     }
 
+    onUpdateChar = (id) => {
+        this.setState(() => {
+            return {
+                updateChar: id
+            }
+        })
+    }
+
     render() {
         const {openRandomChar} = this.state;
 
         const content = openRandomChar ? <RandomChar/> : null
+
         return (
             <> 
                 <Container>
@@ -40,10 +50,10 @@ export default class App extends Component {
                     </Row>
                     <Row>
                         <Col md='6'>
-                            <ItemList />
+                            <ItemList onUpdateChar={this.onUpdateChar}/>
                         </Col>
                         <Col md='6'>
-                            <CharDetails/>
+                            <CharDetails charId={this.state.updateChar}/>
                         </Col>
                     </Row>
                 </Container>
