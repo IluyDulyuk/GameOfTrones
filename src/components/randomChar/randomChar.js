@@ -48,11 +48,13 @@ export default class RandomChar extends Component {
         const content = !(error || loading) ? <View char={char}/> : null;
 
         return (
-            <div className="random-block rounded">
-                {content}
-                {errorMassage}
-                {spinner}
-            </div>
+            <>
+                <div className="random-block rounded">
+                    {content}
+                    {errorMassage}
+                    {spinner}
+                </div>
+            </>
         );
     }
 }
